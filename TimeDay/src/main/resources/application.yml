@@ -1,0 +1,38 @@
+server:
+  error.path: /error
+  port: 8080
+  tomcat.max-threads: 800
+  tomcat.uri-encoding: UTF-8
+  servlet:
+    context-path: /TimeDay
+    session:
+      timeout: 60
+
+spring:
+  datasource:
+     name: dev
+     url: jdbc:mysql://47.99.97.1:3306/douban?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+     username: douban
+     password: 2xNESWNtMyCwHTMF
+     driver-class-name: com.mysql.jdbc.Driver #非必需
+     type: com.alibaba.druid.pool.DruidDataSource #非必需
+     druid:
+       initial-size: 5
+       min-idle: 5
+       max-active: 100
+       max-wait: 60000
+       pool-prepared-statements: true
+       validation-query: SELECT 1 FROM DUAL
+       validation-query-timeout: 60000
+       test-on-borrow: false
+       test-on-return: false
+       test-while-idle: true
+       time-between-eviction-runs-millis: 60000
+       min-evictable-idle-time-millis: 100000
+
+mybatis:
+  mapperLocations: classpath*:/mappers/**Mapper.xml
+  typeAliasesPackage: com.timeday
+  configuration:
+    callSettersOnNulls: true
+    returnInstanceForEmptyRow: true

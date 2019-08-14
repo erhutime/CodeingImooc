@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.timeday.time.dao.OrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.timeday.time.pojo.OrderInfo" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="item_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="promo_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="item_price" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="amount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="order_price" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, item_id, promo_id, item_price, amount, order_price
+  </sql>
+  <insert id="insertSelective" parameterType="com.timeday.time.pojo.OrderInfo" >
+    insert into time_order_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="promoId != null" >
+        promo_id,
+      </if>
+      <if test="itemPrice != null" >
+        item_price,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="promoId != null" >
+        #{promoId,jdbcType=INTEGER},
+      </if>
+      <if test="itemPrice != null" >
+        #{itemPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
